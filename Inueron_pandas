@@ -1,1 +1,15 @@
+Pandas : 
+
+Pandas is a library in python used for accessing,updating,modifying and ect data 
+
+Pandas can handle different kind of file formats 
+
+
+How to read csv file data using pandas : 
+========================================
+
+import pandas as pd 
+
+pd.read_csv("filename")
+
 
