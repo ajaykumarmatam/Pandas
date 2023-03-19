@@ -27,6 +27,160 @@ to avoid above error messages we have to use 'r' like below while reading
 pd.read_csv(r"C:\Users\0027UG744\Desktop\StudentData.csv")
 
 
+pandas will consider first row as columns .if we dont want to consider first row as columns then we should use header=None parameter while reading 
+
+pd.read_csv("filename",header=None)
+
+if we use header=None, header columns will be displayed as 0,1,2,3......
+
+if we dont want to header to be dispalyed as 0,1,2,3,4... ,we use names=['a','b','c','d']
+
+ pd.read_csv("filename",names=['a','b','c','d'])
+
+example : 
+pd.read_csv(r"C:\Users\0027UG744\Desktop\StudentData.csv",names=['a','b','c','d','e','f','g'])
+
+
+
+Pandas will by deafult seperate comma seperated value(csv) ",". 
+
+If columns are seperated by rather than ",".we have to use sep='@',sep="|"
+
+pd.read_csv("filename",sep="@")
+
+if columns are seperate by "|"
+
+pd.read_csv("filename",sep="|")
+
+
+=>Some time we may want skip some rows then we have to use skiprows=[row1,row3]
+
+pd.read_csv("filename",sep="|",skiprows=[1,5])
+
+
+=>pd.read_csv("filename")  -> returns dataframe ->which table structure in pandas
+
+df1=pd.read_csv("filename")
+
+type(df1)    # returns datatypes of each column 
+
+
+
+=>String values are represented as Objects in pandas 
+
+head():
+It will return first records 
+
+=>df.head() 
+
+
+head(2) :
+
+it will return first two records from dataset
+
+=df.head(2)
+
+tail(): 
+
+It will return last 5 records 
+df.tail()
+
+tail(2):
+
+It will return last 2 records 
+df.tail(2)
+
+
+=>To get list of columns 
+df.columns 
+
+=>lets suppose there are many columns we are not intrested in those many columns .we want to get only a few 
+
+df['email']
+
+
+a=df["name"]
+a
+type(a)
+pandas.core.series.Series
+
+Series :  when we get one column+one row
+
+dataframe : collection of multiple series 
+
+==================================================================================================
+
+a=df["name","gender"]
+
+
+---------------------------------------------------------------------------
+KeyError                                  Traceback (most recent call last)
+~\Anaconda3\lib\site-packages\pandas\core\indexes\base.py in get_loc(self, key, method, tolerance)
+   3628             try:
+-> 3629                 return self._engine.get_loc(casted_key)
+   3630             except KeyError as err:
+
+~\Anaconda3\lib\site-packages\pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+~\Anaconda3\lib\site-packages\pandas\_libs\index.pyx in pandas._libs.index.IndexEngine.get_loc()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+pandas\_libs\hashtable_class_helper.pxi in pandas._libs.hashtable.PyObjectHashTable.get_item()
+
+KeyError: ('name', 'gender')
+
+The above exception was the direct cause of the following exception:
+
+KeyError                                  Traceback (most recent call last)
+~\AppData\Local\Temp\ipykernel_27176\3927833831.py in <module>
+----> 1 a=df["name","gender"]
+
+~\Anaconda3\lib\site-packages\pandas\core\frame.py in __getitem__(self, key)
+   3503             if self.columns.nlevels > 1:
+   3504                 return self._getitem_multilevel(key)
+-> 3505             indexer = self.columns.get_loc(key)
+   3506             if is_integer(indexer):
+   3507                 indexer = [indexer]
+
+~\Anaconda3\lib\site-packages\pandas\core\indexes\base.py in get_loc(self, key, method, tolerance)
+   3629                 return self._engine.get_loc(casted_key)
+   3630             except KeyError as err:
+-> 3631                 raise KeyError(key) from err
+   3632             except TypeError:
+   3633                 # If we have a listlike key, _check_indexing_error will raise
+
+KeyError: ('name', 'gender')
+
+
+
+
+a=df.[["name","gender"]]
+
+
+type(df[["name"]])
+
+pandas.core.frame.DataFrame
+
+when you pass even single column as list then it is an dataframe
+
+when you pass single column as column then it is series 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
