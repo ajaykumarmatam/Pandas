@@ -12,4 +12,21 @@ import pandas as pd
 
 pd.read_csv("filename")
 
+Some time while reading we may get below error because windows os 
+
+pd.read_csv("C:\Users\0027UG744\Desktop\StudentData.csv")
+
+ File "C:\Users\0027UG744\AppData\Local\Temp\ipykernel_27176\4077957699.py", line 1
+    pd.read_csv("C:\Users\0027UG744\Desktop\StudentData.csv")
+                                                            ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 2-3: truncated \UXXXXXXXX escape
+
+
+to avoid above error messages we have to use 'r' like below while reading 
+
+pd.read_csv(r"C:\Users\0027UG744\Desktop\StudentData.csv")
+
+
+
+
 
