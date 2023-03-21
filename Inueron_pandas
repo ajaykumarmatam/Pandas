@@ -198,7 +198,7 @@ type(df)  # it returns list not a dataframe
 
 after loading data from web page we want data to be in readable format means in table format 
 
-len(list) # it returns 0 [only 1 index available in list]
+len(list) # it returns 1  means there is 1 table available in list [only 1 index available in list]
 
 type(df[0]) # it returns datframe read
 
@@ -248,6 +248,8 @@ pandas will generate index by deafault .if we dont want pandas to generate index
 
 pd.to_csv("filename",index=False)
 
+Example:
+=======
 
 
 
