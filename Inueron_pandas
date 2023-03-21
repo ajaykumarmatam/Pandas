@@ -221,6 +221,23 @@ when ever we build a model your internal data set is sufficiant enough so we hav
 web pages for this we do.
 
 
+Example:
+========
+
+df=pd.read_html("https://www.basketball-reference.com/leagues/NBA_2015_totals.html")
+
+type(df) 
+
+df1=df[0]
+
+df1.columns 
+
+df1.head()
+
+df1.tail()
+
+df1.head(3)
+
 
 
 
