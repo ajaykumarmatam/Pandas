@@ -170,6 +170,14 @@ when you pass single column as column then it is series
 
 
 
+How to fetch csv data from github :
+==================================
+
+pd.read_csv("https://raw.githubusercontent.com/codeforamerica/ohana-api/master/data/sample-csv/addresses.csv")
+
+Note: you have to click raw in github before loading data from github
+
+
 
 
 
