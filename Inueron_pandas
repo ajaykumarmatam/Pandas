@@ -244,6 +244,10 @@ How to save data from jupitar notebook into local :
 pd.to_csv("pathlocation\filename")
 
 
+pandas will generate index by deafault .if we dont want pandas to generate index 
+
+pd.to_csv("filename",index=None)
+
 
 
 
