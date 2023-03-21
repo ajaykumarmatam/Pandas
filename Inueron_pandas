@@ -239,6 +239,10 @@ df1.tail()
 df1.head(3)
 
 
+How to save data from jupitar notebook into local :
+==================================================
+pd.to_csv("pathlocation\filename")
+
 
 
 
