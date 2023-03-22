@@ -409,14 +409,55 @@ name	gmail	tech	platform
 1	ajay kumar	ajaykumar.matam@gmail.com	bigdata	ineroun
 
 
-
-ad
-
-
+ 
+ 
 
 
+=>If length of two lists belongs to same json file is not same we can't convert json file into dataframe. 
+
+How to resolve above problem statement :
+===========================================
 
 
+
+
+
+
+
+==========================================================================================================================================================
+
+Split / Explode a column of dictionaries into separate columns with pandas
+
+Example :
+=========
+import pandas as pd 
+
+d={"transcript":[{"item":"Nice","type":"word","source":"asr-engine/amazon","confidence":0,"channel":3,"time":119.3975,"duration":0.3375},
+{"item":".","type":"sep","source":"asr-engine/amazon","confidence":0,"channel":3,"time":119.735,"duration":0}],"stable":119.18,"final":119.18}
+
+type(d) #dict
+
+df=pd.DataFrame(d)
+
+df
+
+o/p:
+transcript	stable	final
+0	{'item': 'Nice', 'type': 'word', 'source': 'as...	119.18	119.18
+1	{'item': '.', 'type': 'sep', 'source': 'asr-en...	119.18	119.18
+
+df1=pd.concat([df.drop(['transcript'], axis=1), df['transcript'].apply(pd.Series)], axis=1)
+
+o/p:
+	stable	final	item	type	source	confidence	channel	time	duration
+0	119.18	119.18	Nice	word	asr-engine/amazon	0	3	119.3975	0.3375
+1	119.18	119.18	.	sep	asr-engine/amazon	0	3	119.7350	0.0000
+
+==========================================================================================================================================================
+
+Json data set location 
+
+https://api.github.com/repos/pandas-dev/pandas/issues
 
 
 
