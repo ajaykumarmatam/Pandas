@@ -253,6 +253,165 @@ Example:
 
 
 
+PANDAS AND JSON :
+================
+Every time when we get josn we have to verrify whether json file is valid or not by using online tooks like jsonschemavalidator 
+
+Convert json files into tabular format:
+=======================================
+=>String can not be converted into DataFrame
+
+d="""
+{
+"name":"ajay kumar",
+"gmail":"ajaykumar.matam@gmail.com",
+"tech":["testing","bigdata"]
+}
+"""
+
+Example:
+
+import pandas as pd
+pd.DataFrame(d)
+
+o.p:
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+~\AppData\Local\Temp\ipykernel_20508\2567112034.py in <module>
+----> 1 pd.DataFrame(d)
+
+~\Anaconda3\lib\site-packages\pandas\core\frame.py in __init__(self, data, index, columns, dtype, copy)
+    754         else:
+    755             if index is None or columns is None:
+--> 756                 raise ValueError("DataFrame constructor not properly called!")
+    757 
+    758             # Argument 1 to "ensure_index" has incompatible type "Collection[Any]";
+
+ValueError: DataFrame constructor not properly called!
+
+Note: we can not convert string into dataframe directly 
+
+we have to follow below:
+==========================
+
+example:
+
+import pandas as pd
+
+d="""
+{
+"name":"ajay kumar",
+"gmail":"ajaykumar.matam@gmail.com",
+"tech":["testing","bigdata"]
+}
+"""
+typs(d)  #str
+import json
+
+d1=json.loads(d)
+
+type(d1)  #dict
+
+pd.DataFrame(d1)
+
+o/p:
+
+name	gmail	tech
+0	ajay kumar	ajaykumar.matam@gmail.com	testing
+1	ajay kumar	ajaykumar.matam@gmail.com	bigdata
+
+
+Example: 
+========
+With in json lets say there are two lists .if two lists item count is not equal then we cannot convert into DataFrame
+
+Example:
+
+import pandas as pd 
+
+d="""
+{
+"name":"ajay kumar",
+"gmail":"ajaykumar.matam@gmail.com",
+"tech":["testing","bigdata"],
+"platform":["qaedge"]
+}
+"""
+
+import json
+
+d1=json.loads(d)
+
+pd.DataFrame(d1)
+
+#will get below error 
+
+o/p:
+
+ValueError                                Traceback (most recent call last)
+~\AppData\Local\Temp\ipykernel_20508\3376031797.py in <module>
+----> 1 pd.DataFrame(d1)
+
+~\Anaconda3\lib\site-packages\pandas\core\frame.py in __init__(self, data, index, columns, dtype, copy)
+    634         elif isinstance(data, dict):
+    635             # GH#38939 de facto copy defaults to False only in non-dict cases
+--> 636             mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+    637         elif isinstance(data, ma.MaskedArray):
+    638             import numpy.ma.mrecords as mrecords
+
+~\Anaconda3\lib\site-packages\pandas\core\internals\construction.py in dict_to_mgr(data, index, columns, dtype, typ, copy)
+    500         # TODO: can we get rid of the dt64tz special case above?
+    501 
+--> 502     return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+    503 
+    504 
+
+~\Anaconda3\lib\site-packages\pandas\core\internals\construction.py in arrays_to_mgr(arrays, columns, index, dtype, verify_integrity, typ, consolidate)
+    118         # figure out the index, if necessary
+    119         if index is None:
+--> 120             index = _extract_index(arrays)
+    121         else:
+    122             index = ensure_index(index)
+
+~\Anaconda3\lib\site-packages\pandas\core\internals\construction.py in _extract_index(data)
+    672             lengths = list(set(raw_lengths))
+    673             if len(lengths) > 1:
+--> 674                 raise ValueError("All arrays must be of the same length")
+    675 
+    676             if have_dicts:
+
+ValueError: All arrays must be of the same length
+
+
+Note: so make lists inside json must be in same length
+example:2
+
+import pandas as pd
+
+d="""
+{
+"name":"ajay kumar",
+"gmail":"ajaykumar.matam@gmail.com",
+"tech":["testing","bigdata"],
+"platform":["qaedge","ineroun"]
+}
+"""
+
+import json
+
+d1=json.loads(d)
+
+pd.DataFrame(d1)
+
+o/p:
+name	gmail	tech	platform
+0	ajay kumar	ajaykumar.matam@gmail.com	testing	qaedge
+1	ajay kumar	ajaykumar.matam@gmail.com	bigdata	ineroun
+
+
+
+
+
 
 
 
