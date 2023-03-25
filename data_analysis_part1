@@ -34,7 +34,7 @@ memory usage: 83.7+ KB
 
 
 
-df.describe():
+df.describe():   -it will give basic statistics 
 ===============
 
 PassengerId	Survived	Pclass	Age	SibSp	Parch	Fare
@@ -47,7 +47,7 @@ min	1.000000	0.000000	1.000000	0.420000	0.000000	0.000000	0.000000
 75%	668.500000	1.000000	3.000000	38.000000	1.000000	0.000000	31.000000
 max	891.000000	1.000000	3.000000	80.000000	8.000000	6.000000	512.329200
 
-
+Note: df.describe()- only give the data for columns which has Int and float datatype.
 
 count -records count 
 mean -average 
@@ -62,5 +62,75 @@ what is average age of titanic passangers who on boarded?
 
 
 std(standard deviation); how differnt one column from its mean 
+
+min-
+
+25% - 25 th percentile of data -means whatever data which is in 3rd index of data set represents 25th percentile.
+
+
+
+df.columns 
+
+
+Find out stats for the columns which has object datatypes:
+=========================================================
+df.dtypes(df.dtypes=="object")
+
+note:
+type(df.dtypes)  #pandas.core.series.Series
+
+Series is simmilar like list .
+
+list : 
+
+l=[1,2,3,4,6]
+
+l[l==3]
+2
+similary way:
+df.dtypes(df.dtypes=="object")
+o/p:
+
+Name        object
+Sex         object
+Ticket      object
+Cabin       object
+Embarked    object
+dtype: object
+
+if we want only columns names 
+
+df.dtypes[df.dtypes=="object"].index
+
+Index(['Name', 'Sex', 'Ticket', 'Cabin', 'Embarked'], dtype='object')
+
+col_names=df.dtypes[df.dtypes=="object"].index
+
+df[col_names]
+
+	Name	Sex	Ticket	Cabin	Embarked
+0	Braund, Mr. Owen Harris	male	A/5 21171	NaN	S
+1	Cumings, Mrs. John Bradley (Florence Briggs Th...	female	PC 17599	C85	C
+2	Heikkinen, Miss. Laina	female	STON/O2. 3101282	NaN	S
+3	Futrelle, Mrs. Jacques Heath (Lily May Peel)	female	113803	C123	S
+4	Allen, Mr. William Henry	male	373450	NaN	S
+...	...	...	...	...	...
+886	Montvila, Rev. Juozas	male	211536	NaN	S
+887	Graham, Miss. Margaret Edith	female	112053	B42	S
+888	Johnston, Miss. Catherine Helen "Carrie"	female	W./C. 6607	NaN	S
+889	Behr, Mr. Karl Howell	male	111369	C148	C
+890	Dooley, Mr. Patrick	male	370376	NaN	Q
+
+
+df[col_names].describe()   # bydeafult discribe() dont give stats for chatagarocial (object datatypes) columsn we have to list columns which has object data types
+and then we have to apply discribe() on those cloumns 
+
+
+	Name	Sex	Ticket	Cabin	Embarked
+count	891	891	891	204	889
+unique	891	2	681	147	3
+top	Braund, Mr. Owen Harris	male	347082	B96 B98	S
+freq	1	577	7	4	644
+
 
 
