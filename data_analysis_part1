@@ -133,4 +133,33 @@ top	Braund, Mr. Owen Harris	male	347082	B96 B98	S
 freq	1	577	7	4	644
 
 
+How to add new column into dataFrame:
+===================================
+df["new_cloumn_name"]="value"
+
+df["inueron"]="sudh"
+
+df
+
+How to select specifif column from dataframe:
+=============================================
+df["columnname"]
+
+df["name"]
+
+if we want to get first 15 records of name column only :
+=======================================================
+
+df["name"][0:15]
+
+
+
+
+
+
+
+
+
+
+
 
