@@ -153,6 +153,100 @@ if we want to get first 15 records of name column only :
 df["name"][0:15]
 
 
+alternate records from 0-15
+
+df["name"][0:15:2]
+
+
+Extract row records which has null values of age column :
+==========================================================
+step1:
+
+df["age"]
+
+step2 : 
+
+df["age'].isnull
+
+step3:
+df["age"].isnull==True
+
+step4:
+df[df["age"].isnull==True]
+
+If we want only idexes :
+
+df[df["age"].isnull==True].index
+
+
+Find out the count of index where ever null values :
+
+len(df[df["age"].isnull==True].index)
+
+
+
+
+we can achieve same thing by using loc():
+-======--===============================
+
+loc()-location
+==============
+ind=df[df["age"].isnull==True].index
+
+df.loc(ind)
+
+
+try to find out person name who has paid highest fire :
+-------------------------------------------------------
+step1:
+
+df["Fare"]
+
+step2:
+
+max[df["Fare"]
+
+step3:
+
+df["Fare"]==max[df["Fare"]
+
+step4:
+df[df["Fare"]==max[df["Fare"]]
+
+step5:
+
+df[df["Fare"]==max[df["Fare"]]["Name"]
+
+
+
+Practice below question
+==============================================
+
+1)How many male and female passsangers was onboarded ?
+
+2)How many survided we have 
+
+3)How many casuality we have 
+
+4)what is the name of person who is the eldest one 
+
+5)How passangers do we have in first,seocnd and third class .
+
+6)How many persons whose name starts with "s'
+
+7)Try to create a new column which is summation of "Sibsp " and "parch"
+
+8)How many persons do we have below age 25
+
+9)How many perosns died whose age is below 40
+
+10)From cabin column seperate text and numeric column 
+
+
+
+
+
+
 
 
 
