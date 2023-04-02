@@ -216,7 +216,7 @@ It wont read all the images and other things available in web pages
 why we need to read data from web pages : 
 
 ========================================
-when ever we build a model your internal data set is sufficiant enough so we havr to acquire data from some external source or open source or may be from 
+when ever we build a model your internal data set is not sufficiant enough so we havr to acquire data from some external source or open source or may be from 
 
 web pages for this we do.
 
