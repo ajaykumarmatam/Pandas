@@ -461,4 +461,205 @@ https://api.github.com/repos/pandas-dev/pandas/issues
 
 
 
+df.dropna()
+#it will remove drop records whereever NAN values present .
+#by default axis=0 means it will remove row records by default 
+
+
+df.dropna(axis=1)
+#it will remove columns which NaN values 
+
+
+axis =0 ---> row level
+
+axis =1 --->column level
+
+
+How to check how many null value each column does have :
+========================================================
+
+df.isnull().sum()
+
+
+============================================================================================================
+inplace(False) attribute in dropna()
+
+By defalut inplace(False)
+
+df.dropna()  # after performing dropna() ,again if we run df removed NaN values will come into data frame means NaN values gets deleted temporily .if we want to delete permenantly we have two ways .
+
+one way:
+=======
+df=df.dropna()  override df
+
+second way:
+===========
+df.dropna(inplace=True)
+
+
+
+=============================================================================================================
+
+thresh():
+========
+df.dropna(axis=1)
+#it will remove columns which NaN values 
+#It will remove columns even column does have sinle NaN value
+
+requiremnt : delete column which has more than 10 NaN values.
+
+df.dropna(axis=1,thresh=800)
+
+thresh=800 ---. it requires 800 non NaN value records. if 800 non NaN values are not there it will remove that column 
+
+
+============================================================================================================
+
+how()
+
+df.dropna(axis=1,how="all")
+#it will remove column which does have all NaN values
+
+df.dropna(axis=0,how="all")
+#it will remove row records which does have all NaN values 
+
+============================================================================================================
+
+fillna()
+=========
+
+df.fillna(value="ajay")
+#it will replace records
+
+objective:
+==========
+fill NaN values with average of age column [but this is practice ,In real time we dont replace NaN values with average of some other column 
+
+df.fillna(value=df["Age"].mean())
+
+Replace NaN values of specific column with median of that column
+=================================================================
+
+df["Age"]=df["Age"].fillna(df["Age"].median())
+
+df
+
+=============================================================================================================
+transpose():
+==========
+
+============================================================================================================
+concat():
+=========
+pd.concat([df1,df2])
+#perform row wise concatination 
+
+pd.concat([df1,df3],axis=1)
+#It will perform column wise concatination 
+#it will concat two dfs based on index
+
+===============================================================================================================
+iloc[]  --- integerlocation 
+
+iloc works based on inbuilt index not a named one 
+
+
+df.iloc[:,3]
+#it gives all row records of 3 rd column 
+
+df.iloc[:,[3,4,5]]
+#it gives all the row records of 3,4,and 5th column 
+
+df.iloc[[5,6],[3,4,5]]
+#it gives 5,6 th row records of 3,4 and 5th column 
+
+df.loc[[3,4],["Age"]]
+#it gives 3,4 th row records of age column
+
+=============================================================================================================
+loc[]  -location 
+
+loc words based on named index 
+
+df.loc[[3,4],["Age"]]
+#it gives 3,4 th row records of age column
+
+=============================================================================================================
+merge operations :
+==================
+
+How concatination different from merge:
+=======================================
+
+example:
+========
+df1
+
+id age name city 
+
+1   30  ajay  atp
+
+2   40  kumar  ukd
+
+
+df2
+
+id age name city 
+
+1   35  naven krnl
+
+
+2   40  ravi bnn
+
+
+pd.merge(df1,df2,on="age")
+
+result:
+
+id age  x_name    x_city   y_name   y_city
+2  40    kumar    ukd     ravi      bnn 
+
+
+
+"how" attribute in merger()
+==========================
+there types of merge operations 
+
+1)inner 
+2)right
+3)left
+4)outer
+
+by default inner  considered 
+
+If we want to use other merges we have to specify those in "how" 
+
+
+pd.merge(df1,df2,on="age",how="left")   # matching records from both tables  and all the records from left table
+pd.merge(df1,df2,on="age",how="right")  #matching records from both tables and all the records from right table
+
+
+
+
+To rename column names :
+=========================
+df.rename(columns={job:job1,name:name1},inplace=True)
+
+
+set_index():
+===========
+convert column into index  
+
+df.set_index("age)  #age column become first index 
+
+
+joins :
+======
+
+
+
+
+
+
+
 
