@@ -349,6 +349,10 @@ data[data["Age"]<25]['Age'].count()
 278
 
 9)How many perosns died whose age is below 40
+
+len(data[(data["Survived"]==1) & (data["Age"]<40)])
+
+
 count=0
 for i in data[data["Age"]<40]["Survived"]:
   if i==1:
