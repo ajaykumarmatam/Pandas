@@ -267,6 +267,8 @@ data[data["Age"]==max(data["Age"])]
 PassengerId	Survived	Pclass	Name	Sex	Age	SibSp	Parch	Ticket	Fare	Cabin	Embarked
 630	631	1	1	Barkworth, Mr. Algernon Henry Wilson	male	80.0	0	0	27042	30.0	A23	S
 
+If we want only name ,use below 
+
 data[data["Age"]==max(data["Age"])]["Name"]
 630    Barkworth, Mr. Algernon Henry Wilson
 Name: Name, dtype: object
