@@ -248,17 +248,61 @@ Practice below question
 1)How many male and female passsangers was onboarded ?
 
 data[data["Sex"]=="male"]["Sex"].count()
+or 
+len(data[data["Sex"]=="male"])
 577
 data[data["Sex"]=="female"]["Sex"].count()
 314
+
+or 
+
+value_counts()
+
+It performs group by count  operations 
+
+data['Sex'].value_counts()
+male      577
+female    314
+Name: Sex, dtype: int64
+
+
+or
+
+groupby(columnname)
+
+data.groupby('Sex').count()
+
+PassengerId	Survived	Pclass	Name	Age	SibSp	Parch	Ticket	Fare	Cabin	Embarked
+Sex											
+female	314	314	314	314	261	314	314	314	314	97	312
+male	577	577	577	577	453	577	577	577	577	107	577
+
+Above query performs group by and count on each column if we want only one column 
+Then 
+data.groupby('Sex')["Sex"].count()
+
+Sex
+female    314
+male      577
+Name: Sex, dtype: int64
+
+
+
+
 
 2)How many survided we have ?
 
 data[data["Survived"]==1]["Survived"].count()
 
+data[data["Survived"]==0]["Survived"].count()
+
+or 
+data["Survived"].value_counts()
+
+
 3)
 
-data[data["Survived"]==0]["Survived"].count()
+
 
 4)what is the name of person who is the eldest one 
 
@@ -272,6 +316,44 @@ If we want only name ,use below
 data[data["Age"]==max(data["Age"])]["Name"]
 630    Barkworth, Mr. Algernon Henry Wilson
 Name: Name, dtype: object
+
+5)How many passangers do we have in first,seocnd and third class .
+
+data[data["Pclass"]==1]["Pclass"].count()
+
+data[data["Pclass"]==2]["Pclass"].count()
+
+data[data["Pclass"]==3]["Pclass"].count()
+
+6)How many persons whose name starts with "s'
+
+count=0
+for i in data["Name"]:
+  if(i.startswith("S")):
+    count+=1
+
+print(count)
+
+7)Try to create a new column which is summation of "Sibsp " and "parch"
+
+8)How many persons do we have below age 25
+
+data[data["Age"]<25]['Age'].count()
+278
+
+9)How many perosns died whose age is below 40
+count=0
+for i in data[data["Age"]<40]["Survived"]:
+  if i==1:
+    count+=1
+
+print(count)
+
+229
+
+10)From cabin column seperate text and numeric column 
+
+
 
 
 
