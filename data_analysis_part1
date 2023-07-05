@@ -327,6 +327,11 @@ data[data["Pclass"]==3]["Pclass"].count()
 
 6)How many persons whose name starts with "s'
 
+len(data[data["Name"].str.startswith("S")])
+
+or
+
+
 count=0
 for i in data["Name"]:
   if(i.startswith("S")):
@@ -335,6 +340,8 @@ for i in data["Name"]:
 print(count)
 
 7)Try to create a new column which is summation of "Sibsp " and "parch"
+
+data["Name"]=data["SibSp"]+data["Parch"]
 
 8)How many persons do we have below age 25
 
