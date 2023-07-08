@@ -51,6 +51,46 @@ col1	col2	col3	col4
 3	4	15	meen	16
 4	5	16	kenekal	25
 
+or by using apply function :
+============================
+def test(a):
+    return a**2
+
+df["col4_4]=df["col1"].apply(test)
+
 
 Requirement : I want to create new column with first character of column number 3 
+
+df["col5"]=df["col3"].str[0]
+
+	col1	col2	col3	col4	col5
+0	1	12	ajay	1	a
+1	2	13	kumar	4	k
+2	3	14	matam	9	m
+3	4	15	meen	16	m
+4	5	16	kenekal	25	k
+
+Requirement : Create new column witj below conditon
+if previous column value is a then keep a in new column other wise keep z .
+
+
+By using apply function()
+===========================
+apply is kind of mapper and it will be applicable to each and every element available in list of column 
+
+def test(i):
+  if i=='a':
+    return i
+  else:
+    return 'z'
+
+df["col6"]=df['col5'].apply(test)
+
+	col1	col2	col3	col4	col5	col6
+0	1	     12	  ajay	 1	     a	   a
+1	2	     13	  kumar	 4	     k	   z
+2	3	     14	  matam	 9	     m	   z
+3	4	     15	  meen	 16	     m	   z
+4	5	     16	kenekal	    25	 k	   z
+
 
