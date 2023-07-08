@@ -1,1 +1,56 @@
 
+Creating DataFrame by using Dictionareies
+=========================================
+
+Each key will be created as column 
+
+and Each element in list of dictionaly value created as one row
+
+pd.DataFrame({"col1":[1,2,3,4,5],
+              "col2":[12,13,14,15,16],
+              "col3": "ajay kumar matam meen kenekal"})
+
+
+col1	col2	col3
+0	1	12	ajay kumar matam meen kenekal
+1	2	13	ajay kumar matam meen kenekal
+2	3	14	ajay kumar matam meen kenekal
+3	4	15	ajay kumar matam meen kenekal
+4	5	16	ajay kumar matam meen kenekal
+
+
+Here I dont want store in col3 for each row as "	ajay kumar matam meen kenekal" .To split string we have to use 
+split()
+
+df=pd.DataFrame({"col1":[1,2,3,4,5],
+              "col2":[12,13,14,15,16],
+              "col3": "ajay kumar matam meen kenekal".split()})
+
+df
+
+col1	col2	col3
+0	1	12	ajay
+1	2	13	kumar
+2	3	14	matam
+3	4	15	meen
+4	5	16	kenekal
+
+
+
+
+REquiremnt : I want to create new column to above df and nwe column data would be square of first column 
+
+df["col4"]=df["col1"]**2
+
+df
+
+col1	col2	col3	col4
+0	1	12	ajay	1
+1	2	13	kumar	4
+2	3	14	matam	9
+3	4	15	meen	16
+4	5	16	kenekal	25
+
+
+Requirement : I want to create new column with first character of column number 3 
+
